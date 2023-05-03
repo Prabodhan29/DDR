@@ -1,87 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet" />
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/a8b70d4fae.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/a8b70d4fae.js"
+      crossorigin="anonymous"
+    ></script>
 
-    <link rel="stylesheet" href="/static/css/more_details.css">
+    <link rel="stylesheet" href="/static/css/more_details.css?{% now 'U' %}" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    <!-- ? More details about the current patient -->
-    <div id="current-patient">
-        <div class="current-patient-profile">
-            <div id="login-container">
-                <div class="profile-img">
-                    <img src="/media/{{current_patient.patient_photo}}" alt="profile picture" />
-                </div>
-                <h6> {{current_patient.name}} </h6>
-                <div class="description">
-                    <ul class="description-basic-info">
-                        <li><span>Age:</span> {{current_patient.age}} </li>
-                        <li><span> Gender: </span> {{current_patient.sex}} </li>
-                        <li><span> Last visited: </span> {{ current_patient.visiting_date | date:'j M, Y' }} </li>
-                    </ul>
+  <body>
 
-                    <ul class="description-points">
-                        <li> {{current_patient.description}} </li>
-                        <li>---------------- point 2 -------------------</li>
-                    </ul>
-                </div>
+    <!-- ? VERTICAL NAVIGATION BAR -->
+    <div class="primary-nav">
+      <button class="hamburger open-panel nav-toggle">
+        <span class="screen-reader-text sr-only">Menu</span>
+      </button>
 
-                <div class="profile-footer">
-                    <a class="edit-profile" href="/admin/blogs/patient/{{patient.patient_id}}/change/">
-                        <i class="fa-regular fa-pen-to-square"></i>
-                        <p>Edit profile</p>
-                    </a>
-                </div>
-            </div>
+      <nav role="navigation" class="menu">
+        <a href="/home" class="logotype">
+          <img src="/static/images/logosvg.svg" alt="logo" srcset="" />
+        </a>
+
+        <div class="overflow-container">
+          <ul class="menu-dropdown">
+            <li>
+              <a href="/home">Dashboard</a
+              ><span class="icon"><i class="fa-solid fa-house"></i></span>
+            </li>
+
+            <li>
+              <a href="/admin/blogs/patient/{{current_patient.patient_id}}/change/">Edit Patient info</a
+              ><span class="icon"><i class="fa-solid fa-user-pen"></i></span>
+            </li>
+
+            <li>
+              <a href="#">Search</a
+              ><span class="icon"
+                ><i class="fa-solid fa-magnifying-glass"></i
+              ></span>
+            </li>
+            <li>
+              <a href="/admin/blogs/patient/add/">Add new user</a
+              ><span class="icon"
+                ><i class="fa-solid fa-user-plus"></i></span>
+            </li>
+
+            <li>
+              <a href="/admin/logout/">Logout</a
+              ><span class="icon"
+                ><i class="fa-solid fa-right-from-bracket"></i
+              ></span>
+            </li>
+          </ul>
         </div>
+      </nav>
     </div>
 
+    <!-- ? More details about the current patient -->
+    <div id="current-patient">
+      <div class="current-patient-profile">
+        <div id="login-container">
+          <div class="profile-img">
+            <img
+              src="/media/{{current_patient.patient_photo}}"
+              alt="profile picture"
+            />
+          </div>
+          <h6>{{current_patient.name}}</h6>
+          <div class="description">
+            <ul class="description-basic-info">
+              <li><span>Age:</span> {{current_patient.age}}</li>
+              <li><span> Gender: </span> {{current_patient.sex}}</li>
+              <li>
+                <span> Last visited: </span> {{current_patient.visiting_date|date:'j M, Y' }}
+              </li>
+            </ul>
+
+            <ul class="description-points">
+              <li>{{current_patient.description}}</li>
+              <li>---------------- point 2 -------------------</li>
+               <li>---------------- point 3 -------------------</li>
+            </ul>
+          </div>
+
+          <div class="profile-footer">
+            <a
+              class="edit-profile"
+              href="/admin/blogs/patient/{{current_patient.patient_id}}/change/"
+            >
+              <i class="fa-regular fa-pen-to-square"></i>
+              <p>Edit profile</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- ? Upload eye image form -->
     <div class="upload-image-form">
-        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
-        <header>Drag & Drop to Upload File</header>
-        <span>OR</span>
-        <form method="post" enctype="multipart/form-data" class="form-buttons">
-            {% csrf_token %}
-            <input type="file" name="myfile" id="image_input" />
-            <button type="submit" class="upload_image_button">Upload File</button>
-        </form>
+      <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+      <header>Drag & Drop to Upload File</header>
+      <span>OR</span>
+      <form method="post" enctype="multipart/form-data" class="form-buttons">
+        {% csrf_token %}
+        <input type="file" name="myfile" id="image_input" />
+        <button type="submit" class="upload_image_button">Upload File</button>
+      </form>
+    </div>
+
+    <!-- MORE INFORMATION ABOUT THE PATIENT -->
+    <div class="more-information">
+      <p>More information about the patient</p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias
+        voluptatem, quia pariatur nam repellat minima quas reiciendis! Esse iste
+        fuga molestiae quis, quae voluptas eligendi, repellendus autem eveniet
+        dolore ullam!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, suscipit
+        eius! Asperiores
+      </p>
     </div>
 
     <!-- ? Display the uploaded image and show result -->
     <div id="display-result">
-        <div class="uploaded-image">
-        </div>
-        <h3> {{prediction}} </h3>
+      <div class="uploaded-image"></div>
+      <h3>{{prediction}}</h3>
     </div>
 
-
+    
 
     <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.1.js"
-        integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
     <!-- JavaScript link -->
     <script src="/static/js/script.js"></script>
-
-
-</body>
-
+  </body>
 </html>

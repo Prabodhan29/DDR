@@ -10,38 +10,39 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet" />
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/a8b70d4fae.js" crossorigin="anonymous"></script>
-  
+
   <link rel="stylesheet" href="/static/css/home.css?{% now 'U' %}" />
   <title>Document</title>
-  </head>
+</head>
 
 <body>
-  <!-- ? Logo -->
-  <div id="logo">
-    <a href="">
-      <img src="/static/images/logosvg.svg" alt="logo" />
-    </a>
-  </div>
+  <section id="main-section">
+    <!-- ? Logo -->
+    <div id="logo">
+      <a href="/home">
+        <img src="/static/images/logosvg.svg" alt="logo" />
+      </a>
+    </div>
 
-  <!-- ? Main heading -->
-  <div id="main-heading">
-    <h1>Update existing records</h1>
-  </div>
+    <!-- ? Main heading -->
+    <div id="main-heading">
+      <h1>Update existing records</h1>
+    </div>
+  </section>
 
   <!--? Search bar -->
-<section class="webdesigntuts-workshop">
-  <form action="/home" method="post">
-    {% csrf_token %}
-    <input type="search" placeholder="Enter patient's name..." name="search">
-    <button type="submit">Search</button>
-  </form>
-</section>
-
+  <section class="webdesigntuts-workshop">
+    <form action="/home" method="post">
+      {% csrf_token %}
+      <input type="search" placeholder="Enter patient's name..." name="search" />
+      <button type="submit">Search</button>
+    </form>
+  </section>
 
   <!-- ? Recently added records -->
   <div id="recently-added">
@@ -49,11 +50,10 @@
 
     <!--  Display added patients -->
     <div class="recently-added-profiles">
-    
       {% for patient in patient_info_all %}
       <div id="login-container">
         <div class="profile-img">
-          <img src="/media/{{patient.patient_photo}}" alt="profile picture" />
+          <img src="/media/{{patient.patient_photo}}" alt="profile picture" loading="lazy"/>
         </div>
         <h6>{{patient.name}}</h6>
         <div class="description">
@@ -68,8 +68,9 @@
           <ul class="description-points">
             <li>{{patient.description}}</li>
             <li>---------------- point 2 -------------------</li>
+            <li>---------------- point 3 -------------------</li>
           </ul>
-          </div>
+        </div>
 
         <div class="profile-footer">
           <a class="edit-profile" href="/admin/blogs/patient/{{patient.patient_id}}/change/">
@@ -79,12 +80,11 @@
           <a class="edit-profile" href="/more_details/{{patient.patient_id}}">
             <p>More details</p>
           </a>
-          </div>
-          </div>
-          {% endfor %}
-          </div>
-          </div>
-  
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </body>
 
 </html>

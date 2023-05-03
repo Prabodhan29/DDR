@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-67^!p-yh0jizhibsyp*c6b0i77btxab&3h8(l+!)5^2dga5w%1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -128,9 +128,9 @@ DATE_INPUT_FORMATS = ['%j %M %Y']
 STATIC_URL = 'static/'
 
 # collectstatic command will copy all static files to this folder
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -191,7 +191,7 @@ JAZZMIN_SETTINGS = {
 
     #* UI Tweaks #
     "custom_css": "css/admin_panel_custom.css", #? to use custom css file
-    "custom_js": None,
+    "custom_js": "js/admin_panel_custom.js", # ? to use custom js file
 
     ###############
     # Change view #

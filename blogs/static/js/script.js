@@ -1,4 +1,8 @@
 
+
+
+
+
 const image_input = document.querySelector('#image_input');
 const upload_image_button = document.querySelector('.upload_image_button');
 var uploaded_image = "";
@@ -12,3 +16,14 @@ image_input.addEventListener("change", function() {
 
     reader.readAsDataURL(this.files[0]);
 });
+
+
+
+
+// ? to toggle the hamburger button on vertical navigation bar
+$(".nav-toggle").click(function (e) {
+    e.preventDefault();
+    $("html").toggleClass("openNav");
+    $(".nav-toggle").toggleClass("active");
+});
+

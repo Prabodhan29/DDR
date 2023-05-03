@@ -26,7 +26,7 @@ ul {
 
 :root {
     --font-family-roboto: "Roboto", sans-serif;
-    --font-family-poppins: "Poppins", sans-serif;
+    --font-family-raleway: "Raleway", sans-serif;
     --focus-color: #ea005e;
 }
 
@@ -129,7 +129,7 @@ button:active {
     color: #fff;
     border-radius: 5px;
     padding: 10px 25px;
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-family-roboto);
     font-weight: 600;
     background: transparent;
     cursor: pointer;
@@ -154,7 +154,7 @@ button:active {
         display: none;
     }
 
-    #logo a{
+        #logo a {
         left: 50%;
         margin-left: -2.5rem;
     }

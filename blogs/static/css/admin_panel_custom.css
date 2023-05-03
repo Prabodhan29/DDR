@@ -1,5 +1,3 @@
-
-
 /* to remove the theme name from footer */
 .d-sm-inline {
     display: none !important;
@@ -15,6 +13,7 @@
 .elevation-3 {
     box-shadow: none !important;
 }
+
 .brand-logo {
     border-radius: 0;
     opacity: 1 !important;
@@ -31,9 +30,11 @@
 .nav li:nth-child(3) {
     display: none;
 }
+
 .nav li:nth-child(4) {
     display: none;
 }
+
 .nav li:nth-child(2) {
     display: none;
 }
@@ -42,6 +43,12 @@
     margin-top: 1rem;
     padding-bottom: 2rem;
 }
+
 .login-logo img {
     width: 100px;
+}
+
+.help-block {
+    font-size: 0.9em;
+    font-weight: 600;
 }
